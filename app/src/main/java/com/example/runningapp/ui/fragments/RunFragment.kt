@@ -26,6 +26,7 @@ class RunFragment :Fragment(R.layout.fragment_run),EasyPermissions.PermissionCal
         requestPermission()
         fab.setOnClickListener {
             findNavController().navigate(R.id.action_runFragment_to_trackingFragment)
+
         }
     }
 
