@@ -27,7 +27,6 @@ interface RunDao {
     @Query("SELECT * FROM running_table ORDER BY distanceInMeter DESC")
     fun getAllRunsSortedByAvgDistance() : LiveData<List<Run>>
 
-
     @Query("SELECT SUM(timeInMillis) FROM running_table ")
     fun getTotalTimeInMillis():LiveData<Long>
 
