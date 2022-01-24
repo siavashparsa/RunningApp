@@ -77,6 +77,7 @@ class TrackingService : LifecycleService() {
     }
 
 
+    @SuppressLint("VisibleForTests")
     override fun onCreate() {
         super.onCreate()
         curNotificationBuilder = baseNotificationBuilder
@@ -211,11 +212,11 @@ class TrackingService : LifecycleService() {
         }
     }
 
-    val locationCallback = object : LocationCallback() {
-        override fun onLocationResult(result: LocationResult?) {
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(result: LocationResult) {
             super.onLocationResult(result)
             if (isTracking.value!!) {
-                result?.locations?.let { locations ->
+                result.locations.let { locations ->
                     for (location in locations) {
                         addPathPoint(location)
                         Timber.d("NEW LOCATION: ${location.latitude}, ${location.longitude}")
